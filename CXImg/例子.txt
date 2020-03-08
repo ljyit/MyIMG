@@ -1,0 +1,56 @@
+//#include "D:\桌面\cximage599c_full\CxImage\ximage.h"
+//#pragma comment(lib,"D:/桌面/cximage599c_full/CxImage/Release/cximage.lib")
+//#pragma comment(lib,"D:/桌面/cximage599c_full/jpeg/Release/jpeg.lib")
+//#pragma comment(lib,"D:/桌面/cximage599c_full/png/Release/png.lib")
+
+void FAR tt(ParamBlk FAR *parm) // the function definition 
+{
+	HDC         hScrDC, hMemDC;		// 屏幕和内存设备描述表   
+	int         nX, nY, nX2, nY2;	// 选定区域坐标
+	int         nWidth, nHeight;	// 位图宽度和高度   
+	int         xScrn, yScrn;		// screen resolution      
+	HBITMAP     hBitmap;//位图句柄
+	
+	nX=0, nY=0;
+	nWidth=300;
+	nHeight=300;
+
+	//选择内存DC，绘制到其中，这样的hBmp就是一DDB形式的抓屏结果了
+	hScrDC  = GetDC(NULL);
+	hMemDC  = CreateCompatibleDC(NULL);
+	hBitmap = CreateCompatibleBitmap(hScrDC, nWidth, nHeight);		//选择
+
+	SelectObject(hMemDC,hBitmap);
+	BitBlt( hMemDC, 0, 0, nWidth, nHeight, hScrDC, nX, nY, SRCCOPY);	//得到DDB
+	
+	DeleteDC(hScrDC);
+	DeleteDC(hMemDC); 
+	//
+	CxImage  image;
+	RECT rr;
+	rr.left=100;
+	rr.top=100;
+	rr.right=300;
+	rr.bottom=300;
+	image.CreateFromHBITMAP( hBitmap );
+
+
+	//image.CreateFromHANDLE(hhh);
+	image.Crop(rr);				//裁剪
+	image.Resample(200,200);	//缩放
+	image.Rotate(90.0);			//旋转
+
+	bool mBOOL=false;
+	image.DecreaseBpp(8,mBOOL);//gif要设置位深
+	image.Save("image2.gif",CXIMAGE_FORMAT_GIF);
+	DeleteObject(hBitmap);
+	
+	/*
+	image.Load("image.bmp", CXIMAGE_FORMAT_BMP);
+	if (image.IsValid())
+	{
+		bool mBOOL=false;
+		image.DecreaseBpp(8,mBOOL);
+		image.Save("image.gif",CXIMAGE_FORMAT_GIF);
+	}
+	*/

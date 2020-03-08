@@ -1,0 +1,1406 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>CxImage - The Code Project - Bitmaps &amp; Palettes</title>
+<style>
+/* General styles */
+BODY, P, H1, H2, H3, H4, H5, H6, LI, TD, TH, DD, DT
+{
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 10pt;
+	color: black;
+}
+BODY
+{
+	background-color: #ffffff;
+	color: #000000;
+}
+LI,UL,OL
+{
+	list-style-image: none;
+}
+H1, H2, H3, H4, H5, TH
+{
+	font-weight: bold;
+}
+H2, H3, H5
+{
+	color: #ff9900;
+}
+H1
+{
+	font-size: 16pt;
+}
+H2
+{
+	font-size: 13pt;
+}
+H3
+{
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+}
+H4
+{
+	font-size: 10pt;
+	margin-bottom: 2px;
+}
+H5
+{
+	font-size: 9pt;
+	margin-bottom: 2px;
+}
+H6
+{
+	color: #626262;
+	font-size: 65%;
+	font-weight: normal;
+}
+DD
+{
+	margin-left: 20px;
+}
+PRE
+{
+	background-color: #FBEDBB;
+	padding: 7pt;
+	font: 9pt "Courier New", Courier, mono;
+	white-space: pre;
+	overflow:auto;
+}
+CODE
+{
+	color: #990000;
+	font-family: "Courier New", Courier, mono;
+}
+a:link    { text-decoration:none;      }
+a:visited { text-decoration:none;      }
+a:active  { text-decoration:underline; }
+a:hover   { text-decoration:underline; }
+
+TT.equation 
+{ 
+	font-family: 'Times New Roman', serif; 
+	font-size: 10pt; 
+	font-style: italic; 
+	white-space: pre; 
+}
+/* End General styles */
+
+
+/* Menu and navigation styles */
+.MenuCat
+{
+	border-width:0;
+	text-transform: uppercase; 
+	color: #FFFFFF; 
+	font-family: Arial,Verdana; 
+	font-size: 12px; 
+	font-weight: bold; 
+	background-color: #333;	
+	/*background-color:#488E00;*/
+	/*width:160px;*/
+	padding: 2 0 2 5;
+	margin:0;
+}
+.MenuGroup
+{
+	border-width:0;
+	background-color: #ffcc99;
+	font-weight: normal;
+	font-family: Tahoma, Arial, sans-serif;
+	position: relative;
+	top: 0px;
+	width: 160px;
+	padding:0;
+	margin:0
+}
+.MenuSubCat
+{
+	font-family: Arial; 
+	font-size: 8pt; 
+	color: #000000; 
+	font-weight: bold; 
+	/*width:160px;*/
+	border-style: solid; 
+	border-width: 1; 
+	padding: 1 0 1 5;
+	margin:0;
+    border-color:#fb3;
+	border-top-width: 0;
+	background-color: #FFCC66;
+}
+.MenuSubCat a
+{
+	color: #000000; 
+}
+.MenuSubCat:hover
+{
+	color: #000000;
+	background-color:#FFE0B3;
+}
+.MI, .MI a, .MIS, .MIS a
+{
+    background-color:#FFE0B3;
+	color: black;
+	font-size: 8pt;
+	font-weight: normal;
+	font-family: Verdana, Arial, sans-serif;
+	width: 155 !important; 
+	padding: 1 0 1 3;
+}
+.MI a:hover
+{	
+	text-decoration: none;
+    background-color:#FFFAF2;
+}
+.userNavText, .userNavText a
+{
+    font-size:8pt;
+    color:Black;
+    font-family:verdana,Sans-Serif;
+    letter-spacing:-1;
+}
+/* End Menu and navigation styles */
+
+/* General headlines and bar text */
+.HeaderLogo
+{
+    background-color:#ff9900;
+}
+.HeaderBanner
+{
+    background-color:#ff9900;
+    text-align:right;
+    vertical-align:middle;
+    width:100%;
+}
+.PageBlockHeader
+{
+    padding:2;
+    padding-left:5;
+    font-weight:bold;
+    color:Black;
+    font-family:Arial,Verdana;
+    font-size:15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #cccccc;
+    white-space: nowrap;
+    border-bottom-style:none;
+}
+.MainBlockHeader
+{
+    padding:2;
+    padding-left:5;
+    font-weight:bold;
+    text-transform:uppercase;
+    color:Black;
+    font-family:Arial,Verdana;
+    font-size:13px;
+    background-color:#EFEFEF;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #cccccc;
+    white-space: nowrap;
+}
+.MainBlockContent
+{
+    width:inherit;    
+    padding:5;
+    font-size:11px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #cccccc;
+    border-top-style:none;
+    margin-bottom:10;
+}
+.FeatureBlockHeader
+{
+    width:inherit;
+    padding:2;
+    padding-left:5;
+    font-weight:bold;
+    text-transform:uppercase;
+    color:#990000;
+    font-family:Arial,Verdana;
+    font-size:13px;
+    background-color:#FFE0B3;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #FF9900;
+    white-space: nowrap;
+}
+.FeatureBlockHeader a
+{
+    color:#990000;
+}
+.FeatureBlockContent 
+{
+    font-size: 11px;
+    padding:5;
+    background-color:#FFFAF2;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #FF9900;
+    border-top-style:none;
+    margin-bottom:10;
+    overflow:hidden;
+    text-overflow:ellipsis;	
+}
+.ZoneBlockHeader
+{
+    width:inherit;
+    font-weight:bold;
+    font-family:Arial,Verdana;
+    font-size:16px;
+    white-space: nowrap;
+    border-bottom-width: 5px;
+    border-bottom-color: #efefef;
+    border-bottom-style:dotted;    
+    margin-left:0
+}
+.ZoneSponsor, .ZoneSponsor a
+{
+	color:#666666;
+	font-weight:bold;
+	font-size:11px;
+}
+.ZoneList
+{
+	margin-top:7;
+}
+.ZoneBlockHeader a
+{
+    color:#000;
+}
+.ZoneBlockContent 
+{
+    font-size: 11px;
+    padding:5;
+    margin-bottom:10;
+    overflow:hidden;
+    text-overflow:ellipsis;	
+}
+
+.BlockExtraText
+{
+    text-transform:none;
+    padding-left:20;
+    font-size:11px;
+}
+.TitleBar
+{
+	color: #ff9900;
+	font-size: 135%;
+	font-weight: bold;
+	margin-top:10;
+	text-align:left;
+}
+/* End General headlines and bar text */
+
+
+/* Specialised homepage headers */
+.JoinHeader
+{
+    font-size:13pt;
+    margin:5pt;
+    white-space:nowrap;
+    font-weight:bold;
+    border-style:solid;
+    border-width:1;
+    border-color:black;
+    background-color:#FFB443;
+    padding:5;
+}
+.JoinHeader a
+{
+    color: #990000;
+    height:20;
+}
+.ShopHeader
+{
+    font-size:13pt;
+    margin:5pt;
+    white-space:nowrap;
+    font-weight:bold;
+    border-style:solid;
+    border-width:1;
+    border-color:black;
+    background-color:#76AB40;
+    padding:5;
+}
+.ShopHeader a
+{
+    color: White;
+    filter: Shadow(color=#000000,strength=1,direction=135); 
+    height:20;
+}
+/* End Specialised homepage headers */
+
+
+/* Info and quick-pick bars */
+.MemberNavBar
+{
+    border-bottom-style: solid;
+    border-bottom-width: 1;
+    border-bottom-color: black;
+    background-color:#FFCC66;
+}
+.SiteNavBar td
+{
+    border-color:#488E00;
+    border-style:solid;
+    border-width:1;
+    margin:0;
+	padding-left: 5;
+	padding-right: 5;
+	padding-top:0;
+	padding-bottom:0;
+	position: relative;
+    background-color:#488E00;
+}
+.SiteNavBar a
+{
+    font-weight:bold;
+    font-size:12px;
+    color:White;
+    height:16;
+    padding:1;
+    border-width:1;
+    border-color:#488E00;
+    border-style:solid;
+}
+.SiteNavBar a:hover
+{
+   background-color: #C3DE6C;
+   color:Black;
+   padding:1;
+   text-decoration:none;
+}
+td.SelCat   /* Selected category in the site nav bar */
+{
+	border-color:#488E00;
+	background-color:#C3DE6C;
+}
+td.SelCat a  /* Selected category in the site nav bar */
+{
+	color:black;
+	border-color:#C3DE6C;
+	background-color:#C3DE6C;
+}
+.SearchHeaderBar
+{
+    background-color:#EFEFEF;
+    border-bottom-color:#cccccc;
+    border-bottom-style:solid;
+    border-bottom-width:1;
+    padding:3;
+    margin:0;
+}
+.LHNavBar
+{
+    vertical-align:top;
+    width:160px;
+    /*width: expression(document.body.clientWidth > 160? "160px" : "auto");    */
+    background-color:#FF9900;
+    padding:3;
+}
+.ContentPane
+{
+    vertical-align:top;
+    padding-left:5;
+    padding-right:5;
+    min-height: 300;    
+    height: expression(this.height < 300? "300" : "auto");
+    width:expression(document.body.clientWidth < 973? "813" : document.body.clientWidth-160);
+    position:relative;
+}
+.ArticlePane
+{
+    vertical-align:top;
+    padding-left:5;
+    padding-right:5;
+    width:100%;
+    position:relative;
+}
+.RHFeatureBar
+{
+    vertical-align:top;
+    max-width:160;
+    width:160;
+    overflow:hidden;
+}
+.ArticleHeader, .ArticleUneditedHeader, .ArticlePurgatoryHeader
+{
+    border-bottom-style:solid;
+    border-bottom-width:1;
+    border-bottom-color:#cccccc
+}
+.ArticleHeader          { background-color:#FBEDBB;}
+.ArticleUneditedHeader  { background-color:#DCE2F5;}
+.ArticlePurgatoryHeader { background-color:#E2E2E2;}
+
+/* End Info and quick-pick bars */
+
+/* Quick styles for consistency */
+.precollapse
+{
+	font-size:7pt;
+	font-weight:bold;
+	background-color: #FBEDBB;
+	display:inline;
+	border-bottom-style:solid;
+	border-bottom-width:1;
+	border-bottom-color:#cccccc;
+}
+.formButton
+{ 
+	font-size:90%; 
+	color: white; 
+	border-color: #FBEDBB; 
+	background-color: #E08900; 
+	font-weight: 700; 
+}
+.SmallText
+{
+	font-size:8pt; 
+}
+.tinyText
+{
+	font-size:7pt;
+}
+Caption, .Caption
+{	
+	font-size:8pt;
+	font-style:italic;
+	font-weight: bold;
+}
+.Filename
+{	
+	font-style:italic;
+}
+.Command
+{
+	font-weight: bold;
+}
+.ArticleTable, .ArticleTable td  
+{
+	border: 1px solid #CCCCCC; 
+	border-collapse: collapse; 
+	padding:2px;
+}
+.ArticleTableNoBorder
+{
+	border-style: none; 
+	border-collapse: collapse;
+}
+.ArticleTableNoBorder td 
+{
+	padding:3px;
+}
+.ArticleTable thead, .ArticleTableNoBorder thead 
+{
+	font-weight:bold; background-color: #EFEFEF; 
+}
+.ArticleTable tfoot, .ArticleTableNoBorder tfoot
+{
+	font-weight:bold; 
+}
+
+/* End Quick styles for consistency */
+
+/* List types */
+ul.InfoList
+{
+    padding-left:15;
+    margin-left:0;
+    margin-bottom:5;
+    margin-top:5;
+}
+ul.InfoList li
+{
+    padding-bottom:5;
+}
+ul.download 
+{
+	margin-left: 1.5em
+}
+ul.download LI, LI.download
+{
+	list-style-image: url(/images/download.gif);
+	font-size: 9pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding-left: 0.5em;
+}
+
+ul.delegate li, li.delegate   { list-style-image: url(/images/symbols/delegate.gif); }
+ul.enum li, li.enum			  { list-style-image: url(/images/symbols/Enum.GIF); }
+ul.event li, li.event		  { list-style-image: url(/images/symbols/event.GIF); }
+ul.interface li, li.interface { list-style-image: url(/images/symbols/interface.GIF); }
+ul.literal li, li.literal	  { list-style-image: url(/images/symbols/literal.GIF); }
+ul.method li, li.method		  { list-style-image: url(/images/symbols/method.GIF); }
+ul.namespace li, li.namespace { list-style-image: url(/images/symbols/namespace.GIF); }
+ul.property li, li.property	  { list-style-image: url(/images/symbols/property.GIF); }
+ul.struct li, li.struct		  { list-style-image: url(/images/symbols/struct.GIF); }
+
+ul.compactlist li, li.compactlist 
+{
+	list-style-image: url(/images/smallarrow.gif);
+	font-size: 8pt;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin-left: -1em;
+	margin-bottom: 0pt;
+}
+ul.compactlist
+{
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+}
+/* End List types */
+
+
+/* Forum Stuff. To be extracted. */
+
+textarea#ContentText { behavior: url(/styles/lnkutils.htc); }
+
+.messagecontent
+{
+	font: 9.5pt Verdana, "Courier New", Courier, mono;
+}
+.Default		  { font-family: Verdana, Helvetica, Arial, sans-serif; }
+:link.forum_link    { text-decoration:none;      color:#E08900 }
+:visited.forum_link { text-decoration:none;      color:#E08900 }
+:active.forum_link  { text-decoration:none;      color:#E08900 }
+:hover.forum_link   { text-decoration:underline; color:#E08900 }
+.forum_hilite       { background-color: yellow}
+.FQ
+{
+	PADDING-LEFT: 0.6em; 
+	MARGIN-LEFT: 0.25em; 
+	BORDER-LEFT: gray 0.2em solid; 
+	COLOR: #556655; 
+	MARGIN-RIGHT: 1em;
+	margin-bottom: -1em;
+}
+.FQA
+{
+	font-size: 10px;
+	font-weight: bold;
+	MARGIN-LEFT: -0.25em;
+}
+.cpp-comment,.cs-comment,.vb-comment	{ COLOR: green; FONT-STYLE: italic; }
+.cpp-keyword,.cs-keyword, .vb-function	{ COLOR: blue; }
+.cpp-preprocessor, .cs-preprocessor		{ COLOR: navy; }
+.cpp-string,.cs-string,.vb-string		{ COLOR: purple; }
+.cpp-literal,.cs-literal,.vb-literal	{ COLOR: midnightblue }
+.cs-clrtype	{ color: #339999; }
+.vb-keyword,.vb-statement	{ COLOR: blue; font-weight:normal;}
+
+TABLE#tblButtonBar {
+	MARGIN-TOP: 1px
+}
+.clsButton {
+	BACKGROUND-COLOR: #ff9900;
+	BORDER-RIGHT: #ff9900 1px solid; 
+	BORDER-TOP: #ff9900 1px solid; 
+	BORDER-LEFT: #ff9900 1px solid; 
+	BORDER-BOTTOM: #ff9900 1px solid;
+ 	text-decoration: none; 
+	font-weight: bold; 
+	FONT-SIZE: 8pt; 
+	color: #333300;
+}
+TD.clsButtonBar TABLE.clsButton TD {
+	PADDING: 1px;
+}
+.clsButtonLnk {
+ 	text-decoration: none; 
+	font-weight: bold; 
+	FONT-SIZE: 8pt; 
+	color: #333300;
+	padding: 1;
+}
+:hover.clsButtonLnk {
+	color: blue;
+}
+
+/* ...and this stuff? Deprecated. Begone... */
+
+.Headline 
+{ 
+    font-weight: bold; 
+    font-size:13px; 
+    margin-bottom: 5px !important; 
+    color:Black;
+}
+.sidebar
+{
+	font-weight: bold;
+	color: #ffffff;
+	font-size: 9pt;
+	text-decoration: none;
+}
+.navbar 
+{
+	font-weight: bold;
+	color: white;
+	font-size: 8pt;
+	text-decoration: none;
+}
+
+button.toolbar 
+{
+	border: 1px;
+	border-style: solid;
+	background-color: white;
+	border-color: white;
+	font-family: Verdana, Arial, Tahoma, "MS Sans Serif", sans-serif;
+	font-size: 9pt;
+}
+div.toolbar 
+{
+	background-color: white;
+	border-color: #FF9900;
+	padding: 1px 2px 2px 2px;
+}
+
+
+:hover.navbar  { color:blue; } 
+:active.navbar { color:red; }
+:hover.NavMenuItem  { color: Blue; }
+:active.NavMenuItem { color: Red;  }
+.AdLink, a .AdLink
+{
+	color: black;
+	font-size: 8pt;
+}
+.infobar
+{
+	font-size: 8pt;
+	margin-left: 0pt;
+	text-indent: 0pt;
+}
+.infobarList
+{
+	font-size: 8pt;
+	margin-left: 1.5em;
+	text-indent: -1.5em;
+}
+.InfobarHeader
+{
+	font-size: 9pt;
+	font-weight: bold;
+	margin-bottom: -10px;
+	color: #ab2600;
+}
+.HoverLink
+{ 
+	text-decoration: none;      
+	font-size:8pt; 
+	padding: 1px 2px 1px 2px;
+	background-color: #fbedbb;
+	border-color: #fbedbb;
+	border-width: 1px;
+	border-style: solid;
+}
+A.HoverLink
+{
+	text-decoration: none;      
+	color : blue; 
+}
+a:hover.HoverLink
+{
+	border-color: #ff9900;
+	background-color: #ffcc99;
+}
+a:active.HoverLink
+{
+	background-color: #FFC082;
+	border-color: #ff9900;
+}
+.links, .messagetitle, .SiteNewsHeading
+{
+	font-size:8pt; 
+}
+.FeatureBox
+{
+	background-color: #A5C9EF;
+	BORDER: #6699cc 1px solid; 
+	PADDING: 2px; 
+}
+.FeatureBoxHeader, .FeatureBoxHeader a
+{
+	color: #993300;
+	font-family: Verdana;	
+	
+	padding-left: 2pt;
+	padding-bottom: 2pt;
+	font-weight: bold;
+	font-size: 13pt;
+}
+.FeatureBoxHeaderArrow
+{
+	background-color: #6699cc;
+}
+</style>
+</head>
+<body>
+<!-- Article Starts -->
+<h2>&nbsp;</h2>
+<p>&#20986;&#22788;&#65306;http://www.codeproject.com/bitmap/cximage.asp</p>
+<p>&#26408;&#29916;&#25972;&#29702;</p>
+<h2>Preface</h2>
+<p>CxImage grew together with the CodeProject site, since 2001, and reached this level thanks to the CodeProject community. Thanks a lot for the suggestions, the contributions and for the critiques. However, if I look at the other image processing libraries, it is clear that nowadays, the CxImage project is quite inadequate from many points of view. For this reason, this one will be last release in this form. Of course the development will not stop: it is just going to follow new directions.</p>
+
+<h2>Introduction</h2>
+
+<p><code>CxImage</code> is a C++ class that can load, save, display, transform images in a very simple and fast way.</p>
+
+<p><em>Why another image library?</em> Around there are many good libraries (OpenIL, FreeImage, PaintLib ...), these are powerful, complete, and constantly updated. However if you ever try to use them, you may find some difficulties; because these libraries are mainly platform independent, written in C, sometimes with a basic C++ wrapper and with tons of compiler switch declarations. Now with the new GDI+ classes on the scene, maybe CxImage isn't so useful, but at least here you have the source code. It is not a MFC library, altogether it's a windows library, because of some particular constructors and the painting functions, but the backbone is platform independent.</p>
+
+<h2>License<a name="License"></a></h2>
+
+<p>The class <code>CxImage </code>is <strong>free</strong>; as for the TIFF, JPEG, PNG and ZLIB libraries : "<em>If you use this source code in a product, acknowledgment is not required but would be appreciated.</em>"</p>
+
+<p><code>CxImage </code>is <a href="http://opensource.org/" target="_blank">open source </a>and licensed under the <a href="http://opensource.org/licenses/zlib-license.html" target="_blank">zlib license </a>. In a nutshell, this means that you can use the code however you wish, as long as you don't claim it as your own. </p>
+
+<h2>What's new in version 5.99c<a name="news"></a></h2>
+<strong>Bugfixes </strong>
+<ul>
+<li><code>CxImageTIF::Encode</code>: default compression for 4 bpp image was <code>NONE</code>, now it's <code>LZW</code>. </li>
+
+<li>fixed <code>SetXDPI </code>and <code>SetYDPI </code>to accept only positive dpi values </li>
+
+<li>fixed EXIF decoder against invalid <code>TAG_EXIF_OFFSET </code>/ <code>TAG_INTEROP_OFFSET </code></li>
+
+<li>fixed missing definitions in ximawnd.cpp when <code>CXIMAGE_SUPPORT_BMP </code>is 0 </li>
+
+<li>fixed <code>CxFileJas </code>constructor to avoid crashes, when Jasper deals with its temporary files, decoding large images </li>
+
+<li>removed default imagetype value from <code>CxImage::Save </code></li>
+
+<li>fixed <code>Mean() </code>for images with an active selection </li>
+
+<li>fixed GIF decoder for animated images with corrupted frames. </li>
+
+<li>fixed GIF decoder for images with screen descriptor larger than the first frame. </li>
+
+<li>fixed GIF decoder to handle the disposal methods correctly. </li>
+
+<li><code>CxImageWMF </code>reads images mapped in <code>MM_TEXT</code>, when <code>MM_ANISOTROPIC </code>fails. </li>
+
+<li>fixed Clear for 1 and 4 bpp images. </li>
+
+<li>fixed typo in ximajpg.cpp: <code>ENTRPY_OPT_SUPPORTED </code>-&gt; <code>ENTROPY_OPT_SUPPORTED </code></li>
+
+<li>fixed potential memory overflow in RLE decoder reading corrupted bitmaps. </li>
+
+<li>Better UNICODE support and fixed <code>TCHAR </code>mappings for Linux. </li>
+
+<li>fixed bug in <code>IsTransparent </code>, for images with a valid alpha layer. </li>
+
+<li>fixed bug in <code>Create </code>: a vaild image was created even if width or height were zero. </li>
+
+<li><code>CxMemFile</code>: fixed problem for compilers where <code>malloc(0)</code> returns 0, improvements in <code>Alloc</code>. </li>
+</ul>
+<strong>Changes and major additions </strong>
+<ul>
+<li>new functions: <code>Rotate2() </code><code>&lt;BD&gt;</code>, <code>Resample2() </code><code>QIShrink()</code>, <code>RedEyeRemove()</code>, <code>Edge()</code>, <code>SelectionSplit() </code>, <code>IsSamePalette</code>, <code>BlendPixelColor</code>, <code>GetVersionNumber</code>, <code>Encode2RGBA</code> </li>
+
+<li>new dithering algorithms: Bayer, Burkes, Stucki, Jarvis-Judice-Ninke, Sierra, Stevenson-Arce </li>
+
+<li>renamed <code>AlphaGetBits </code>with <code>AlphaGetPointer </code></li>
+
+<li>new compiler switch: <code>CXIMAGE_SUPPORT_INTERPOLATION </code>to enable pixel color interpolations, <br />implemented in the ximaint.cpp module </li>
+
+<li>New bEnableInterpolation parameter for <code>Skew() </code></li>
+
+<li>New blend parameter for <code>Colorize() </code></li>
+
+<li>color conversion routines now are declared as <code>static</code> </li>
+
+<li>FFT2 now works also with Borland compilers </li>
+
+<li>more interpolation kernels </li>
+
+<li>Smooth stretching parameter for <code>Draw</code> </li>
+
+<li>Added <code>FreeMemory </code>function, to avoid heap problems using Encode with memory buffers </li>
+
+<li>new <code>bMixAlpha </code>parameter and new OpScreen blending mode for <code>Mix() </code></li>
+
+<li>LZW compression is the default algorithm for GIF compression. </li>
+
+<li><code>CxImagePNG </code>now can encode interlaced images </li>
+
+<li>Get/SetCodecOption now has an "ImageType" parameter, so that each format keeps its specific options </li>
+
+<li>Faster <code>RotateLeft </code>and <code>RotateRight </code></li>
+
+<li><code>CxImageJPG </code>now can write back the EXIF information (verbatim copy). </li>
+</ul>
+<strong>Project - Libraries - Demo application </strong>
+<ul>
+<li>Demo: new dialogs for Resample, Rotate, Skew with more options, JPEG compression </li>
+
+<li>New license based on zlib/libpng philosophy, see ximage.h and license.txt </li>
+
+<li>Demo: new tool: tracker </li>
+
+<li>Demo: new View/Smooth menu to test smooth drawing in zoom and stretch modes </li>
+
+<li>Demo: more CodecOptions on the Options dialog, enabled LZW compression for GIF and TIF formats. </li>
+
+<li>PNG: updated to libpng 1.2.7 </li>
+
+<li>JBIG: updated to version 1.6 </li>
+
+<li>Better documentation : now using Doxygen. </li>
+</ul>
+
+<h2>CxImage structure<a name="structure"></a></h2>
+
+<p>In the vertical hierarchy of the library, <code>CxImage </code>stays on the top of the other modules, it's not a clean OOP approach, but the result was good since the first release and now it's too late to change again. Anyway you can always use the derived classes to perform the format specific operations, like for <code>CxImageTIF</code> to save multipage TIFFs.</p>
+
+<p>The glue to connect all the modules and the C libraries is <code>CxFile</code>, a virtual class that provides the standard methods to access the data from a file on the disk or in memory.</p>
+
+<p><img height="243" src="cximage/structure2.png" width="416" /></p>
+
+<p>A <code>Cximage </code>object is basically a bitmap, with the addition of some member variables to store useful information:</p>
+
+<pre> class CxImage
+  {
+  ...
+  protected:
+  void* pDib;            //contains the header, the palette, the pixels
+  BITMAPINFOHEADER head; //standard header
+  CXIMAGEINFO info;      //extended information
+  BYTE* pSelection;      //selected region
+  BYTE* pAlpha;          //alpha channel
+  CxImage** pLayers;     //generic layers
+  }</pre>
+
+<p><code>CxImage::head</code> is the bitmap header and <code>CxImage::pDib</code> is a normal bitmap (as you can see in the implementation of <code>CxImageBMP::Encode</code>).</p>
+
+<p><code>CxImage::info</code> is a handy container of many information shared between different formats, and for all the member functions.</p>
+
+<pre>typedef struct tagCxImageInfo {
+    DWORD   dwEffWidth;       //DWORD aligned scan line width
+    BYTE*   pImage;           //THE IMAGE BITS
+    void*   pGhost;           //if this is a ghost, pGhost point to the body
+    DWORD   dwType;           //original image format
+    char    szLastError[256]; //debugging
+    long    nProgress;        //monitor
+    long    nEscape;          //escape
+    long    nBkgndIndex;      //used for GIF, PNG, MNG
+    RGBQUAD nBkgndColor;      //used for RGB transparency
+    BYTE    nQuality;         //used for JPEG
+    long    nFrame;           //used for TIF, GIF, MNG : actual frame
+    long    nNumFrames;       //used for TIF, GIF, MNG : total number of 
+                              //frames
+    DWORD   dwFrameDelay;     //used for GIF, MNG
+    long    xDPI;             //horizontal resolution
+    long    yDPI;             //vertical resolution
+    RECT    rSelectionBox;    //bounding rectangle
+    BYTE    nAlphaMax;        //max opacity (fade)
+    bool    bAlphaPaletteEnabled;  //true if alpha values in the palette are 
+                              // enabled.
+    bool    bEnabled;         //enables the painting functions
+    long    xOffset;
+    long    yOffset;
+    DWORD   dwEncodeOption;   //for GIF, TIF : 0=def.1=unc,2=fax3,3=fax4,
+                              // 4=pack,5=jpg
+    RGBQUAD last_c;           //for GetNearestIndex optimization
+    BYTE    last_c_index;
+    bool    last_c_isvalid;
+    long    nNumLayers;
+    DWORD   dwFlags;
+} CXIMAGEINFO;</pre>
+
+<table cellspacing="0" cellpadding="0" width="100%" border="0">
+<tbody>
+<tr>
+<td valign="top">
+<p>A <code>CxImage </code>object is also a set of layers. The buffers in each layer are allocated only when necessary.</p>
+</td>
+
+<td valign="top"><img height="177" src="cximage/layers.jpg" width="486" align="right" /></td>
+</tr>
+</tbody>
+</table>
+
+<p><code>CxImage::pDib </code>is the background image. <code>CxImage::pAlpha </code>is the transparency layer. <code>CxImage::pSelection </code>is the selection layer, used to create regions of interest for image processing. Over these 3 specific planes, you can add other generic layers, stored in <code>CxImage::pLayers</code>. The generic layers are full CxImage objects, so you can build complex structures of nested layers. </p>
+
+<h2>CxImage Class Members &amp; Operations<a name="members"></a></h2>
+
+<p>CxImage 5.99c is documented using <a href="http://www.doxygen.org/" target="_blank">Doxygen </a>, however for historical reasons, many uncommon features are still undocumented. The class members reference, together with release history, and license, can be found <a href="http://www.xdp.it/cximage/" target="_blank">here </a></p>
+
+<h2>Supported formats and options<a name="options"></a></h2>
+
+<p>The whole library is quite big, in the main header file<strong> <em>ximcfg.h</em></strong> you'll find the switches to enable or disable a specific graphic format or feature. Each JPG, PNG and TIFF library adds about 100KB to the final application, while the<code> CxImage</code> impact is about 50KB. So you should support and link only the formats that your application really needs.</p>
+
+<table cellspacing="0" cellpadding="2" width="100%" border="1">
+<tbody>
+<tr>
+<td width="43%"><strong>formats</strong></td>
+
+<td width="20%"><strong>#define</strong></td>
+
+<td width="27%"><strong>required libraries</strong></td>
+
+<td width="10%"><strong>size [Kbyte]</strong></td>
+</tr>
+
+<tr>
+<td width="43%">BMP<br />GIF<br />ICO<br />TGA<br />PCX<br />WBMP<br />WMF</td>
+
+<td width="20%"><code>CXIMAGE_SUPPORT_BMP<br />CXIMAGE_SUPPORT_GIF<br />CXIMAGE_SUPPORT_ICO<br />CXIMAGE_SUPPORT_TGA<br />CXIMAGE_SUPPORT_PCX<br />CXIMAGE_SUPPORT_WBMP<br />CXIMAGE_SUPPORT_WMF</code></td>
+
+<td width="27%"><br />built in</td>
+
+<td width="10%"><br />24</td>
+</tr>
+
+<tr>
+<td width="43%">JPEG</td>
+
+<td width="20%"><code>CXIMAGE_SUPPORT_JPG</code></td>
+
+<td width="27%"><br />jpeg</td>
+
+<td width="10%"><br />88</td>
+</tr>
+
+<tr>
+<td width="43%">PNG</td>
+
+<td width="20%"><code>CXIMAGE_SUPPORT_PNG</code></td>
+
+<td width="27%"><br />png, zlib</td>
+
+<td width="10%"><br />104</td>
+</tr>
+
+<tr>
+<td width="43%">MNG</td>
+
+<td width="20%"><code>CXIMAGE_SUPPORT_MNG</code></td>
+
+<td width="27%"><br />mng, zlib, jpeg</td>
+
+<td width="10%"><br />148</td>
+</tr>
+
+<tr>
+<td width="43%">TIFF</td>
+
+<td width="20%"><code>CXIMAGE_SUPPORT_TIF</code></td>
+
+<td width="27%"><br />tiff, zlib, jpeg</td>
+
+<td width="10%"><br />124</td>
+</tr>
+
+<tr>
+<td width="43%">JBIG</td>
+
+<td width="20%"><code>CXIMAGE_SUPPORT_JBG</code></td>
+
+<td width="27%"><br />jbig</td>
+
+<td width="10%"><br />28</td>
+</tr>
+
+<tr>
+<td width="43%">PNM,PPM,PGM<br />RAS </td>
+
+<td width="20%"><code>CXIMAGE_SUPPORT_PNM<br />CXIMAGE_SUPPORT_RAS</code></td>
+
+<td width="27%"><br />jasper</td>
+
+<td width="10%"><br />176</td>
+</tr>
+
+<tr>
+<td width="43%">JPEG-2000</td>
+
+<td width="20%"><code>CXIMAGE_SUPPORT_JP2<br />CXIMAGE_SUPPORT_JPC<br />CXIMAGE_SUPPORT_PGX</code></td>
+
+<td width="27%"><br />jasper</td>
+
+<td width="10%"><br />176</td>
+</tr>
+</tbody>
+</table>
+<br />
+<table cellspacing="0" cellpadding="2" width="100%" border="1">
+<tbody>
+<tr>
+<td width="43%"><strong>Option</strong></td>
+
+<td width="47%"><strong>#define</strong></td>
+
+<td width="10%"><strong>Size [Kbyte]</strong></td>
+</tr>
+
+<tr>
+<td width="43%">CxImage core</td>
+
+<td width="47%">all switches off</td>
+
+<td width="10%">20</td>
+</tr>
+
+<tr>
+<td width="43%" height="13">geometric transformations</td>
+
+<td width="47%" height="13"><code>CXIMAGE_SUPPORT_TRANSFORMATION</code></td>
+
+<td width="10%" height="13">16</td>
+</tr>
+
+<tr>
+<td width="43%">image processing</td>
+
+<td width="47%"><code>CXIMAGE_SUPPORT_DSP</code></td>
+
+<td width="10%">24</td>
+</tr>
+
+<tr>
+<td width="43%">drawing and windows specific functions</td>
+
+<td width="47%"><code>CXIMAGE_SUPPORT_WINDOWS</code></td>
+
+<td width="10%">12</td>
+</tr>
+
+<tr>
+<td width="43%">transparency</td>
+
+<td width="47%"><code>CXIMAGE_SUPPORT_ALPHA</code></td>
+
+<td width="10%">4</td>
+</tr>
+
+<tr>
+<td width="43%">selections</td>
+
+<td width="47%"><code>CXIMAGE_SUPPORT_SELECTION</code></td>
+
+<td width="10%">4</td>
+</tr>
+
+<tr>
+<td width="43%">multiple layers</td>
+
+<td width="47%"><code>CXIMAGE_SUPPORT_LAYERS</code></td>
+
+<td width="10%">&lt; 4</td>
+</tr>
+
+<tr>
+<td width="43%">graphic formats conversion</td>
+
+<td width="47%"><code>CXIMAGE_SUPPORT_DECODE<br />CXIMAGE_SUPPORT_ENCODE </code></td>
+
+<td width="10%">&lt; 4</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Using CxImage in your projects<a name="projects"></a></h2>
+
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td valign="top">
+<p>The <strong>CxImgLib.dsw</strong> workspace shows the libraries required to build an application (demo.exe) including almost all the features and the formats available in CxImage. You must compile all the libraries before you can link the final application.<br />In the same workspace you'll find the projects to build different libraries and applications:</p>
+
+<ul>
+<li>CxImage : <em>cximage.lib</em> - static library </li>
+
+<li>CxImageCrtDll : <em>cximagecrt.dll</em> - DLL not using mfc </li>
+
+<li>CxImageMfcDll : <em>cximage.dll</em> - DLL using mfc </li>
+
+<li>Demo : <em>demo.exe</em> - program linked with <em>cximage.lib</em> and the C libraries </li>
+
+<li>DemoDll : <em>demodll.exe</em> - program linked with <em>cximagecrt.dll</em> </li>
+
+<li>j2k,jasper,jbig,jpeg,png,tiff,zlib : static C libraries </li>
+</ul>
+
+<p>Building the projects will need some minutes to complete (the intermediate files occupy 60MB!). When everything is done, select the demo project and launch the application.</p>
+</td>
+
+<td><strong>CxImgLib.dsw</strong><br /><img height="193" src="cximage/tree.png" width="151" /></td>
+</tr>
+</tbody>
+</table>
+
+<p>To use CxImage in your project, you must edit these settings: </p>
+
+<pre lang="text">Project Settings
+ |- C/C++
+ |   |- Code Generation
+ |   |   |- Use run-time library : Multithreaded DLL (must be the same for 
+ |   |   |  all the linked libraries)
+ |   |   |- Struct member alignment : must be the same for all the linked 
+ |   |   |  libraries
+ |   |- Precompiled headers : not using precompiled headers
+ |   |- Preprocessor
+ |       |- Additional Include Directories:  ..\cximage
+ |- Link
+    |- General
+        |- Object/library modules: ../png/Debug/png.lib 
+                                   ../jpeg/Debug/jpeg.lib 
+                                   ../zlib/Debug/zlib.lib 
+                                   ../tiff/Debug/tiff.lib 
+                                    ../cximage/Debug/cximage.lib  ...</pre>
+
+<p />
+
+<h2>Adding your custom functions in CxImage<a name="custom"></a></h2>
+
+<p>Writing a new function for image processing is not so hard with <code>CxImage</code>. Here I'm going to describe <code>CxImage::Jitter</code>, it's very simple but it shows many aspects to take care when you work inside CxImage. The first thing, of course, is the declaration : <code>bool Jitter(long radius=2);</code> in the <code>CXIMAGE_SUPPORT_DSP </code>section of ximage.h, you can declare the function everywhere in the <code>public</code> scope of the class. And now the definition: </p>
+
+<pre>bool CxImage::Jitter(long radius)
+{
+    // check if the image is valid, this should be always the first line in 
+    // the function 
+    if (!pDib) return false;
+    
+    // local variables
+    long nx,ny;
+    
+    // temporary image to store the partial results of the algorithm
+    CxImage tmp(*this,pSelection!=0,true,true);
+    
+    // limit the effects of the functions only in the smallest rectangle that
+    // holds the selected region (defined with the Selection...() functions ),
+    // this will speed up the loops.
+    long xmin,xmax,ymin,ymax;
+    if (pSelection){
+        xmin = info.rSelectionBox.left; xmax = info.rSelectionBox.right;
+        ymin = info.rSelectionBox.bottom; ymax = info.rSelectionBox.top;
+    } else {
+        xmin = ymin = 0;
+        xmax = head.biWidth; ymax=head.biHeight;
+    }
+    
+    // main loop : scan the image in vertical direction
+    for(long y=ymin; y &lt;ymax; y++){
+    
+        // monitor the progress of the loops
+        info.nProgress = (long)(100*y/head.biHeight);
+    
+        // let the application a way to exit quickly
+        if (info.nEscape) break;
+    
+        // main loop : scan the image in horizontal direction
+        for(long x=xmin; x&lt;xmax; x++){
+    
+        // if the feature is enabled, process only the pixels inside the 
+        // selected region
+#if CXIMAGE_SUPPORT_SELECTION
+            if (SelectionIsInside(x,y))
+#endif //CXIMAGE_SUPPORT_SELECTION
+            {
+                // main algorithm
+                nx=x+(long)((rand()/(float)RAND_MAX - 0.5)*(radius*2));
+                ny=y+(long)((rand()/(float)RAND_MAX - 0.5)*(radius*2));
+                if (!IsInside(nx,ny)) {
+                    nx=x;
+                    ny=y;
+                }
+
+                // save the result in the temporary image.
+                // if you can, use PixelColor only for 24 bpp images,
+                // and PixelIndex for 8, 4 and 1 bpp images : it's faster
+                if (head.biClrUsed==0){
+                    tmp.SetPixelColor(x,y,GetPixelColor(nx,ny));
+                } else {
+                    tmp.SetPixelIndex(x,y,GetPixelIndex(nx,ny));
+                }
+
+                // if the feature is enabled, process also the pixels 
+                // in the alpha layer
+#if CXIMAGE_SUPPORT_ALPHA
+                tmp.AlphaSet(x,y,AlphaGet(nx,ny));
+#endif //CXIMAGE_SUPPORT_ALPHA
+            }
+        }
+    }
+
+    // save the result and exit
+    Transfer(tmp);
+    return true;
+}
+</pre>
+
+<h2>Examples: how to ...<a name="examples"></a></h2>
+
+<h2>... convert from a format to another</h2>
+
+<pre>CxImage  image;
+// bmp -&gt; jpg
+image.Load("image.bmp", CXIMAGE_FORMAT_BMP);
+if (image.IsValid()){
+    if(!image.IsGrayScale()) image.IncreaseBpp(24);
+    image.SetJpegQuality(99);
+    image.Save("image.jpg",CXIMAGE_FORMAT_JPG);
+}
+// png -&gt; tif
+image.Load("image.png", CXIMAGE_FORMAT_PNG);
+if (image.IsValid()){
+    image.Save("image.tif",CXIMAGE_FORMAT_TIF);
+}
+</pre>
+
+<h2>... load an image resource</h2>
+
+<pre>//Load the resource IDR_PNG1 from the PNG resource type
+CxImage* newImage = new CxImage();
+newImage-&gt;LoadResource(FindResource(NULL,MAKEINTRESOURCE(IDR_PNG1),
+                       "PNG"),CXIMAGE_FORMAT_PNG);</pre>
+or 
+<pre>//Load the resource IDR_JPG1 from DLL
+CxImage* newImage = new CxImage();
+HINSTANCE hdll=LoadLibrary("imagelib.dll");
+if (hdll){
+    HRSRC hres=FindResource(hdll,MAKEINTRESOURCE(IDR_JPG1),"JPG");
+    newImage-&gt;LoadResource(hres,CXIMAGE_FORMAT_JPG,hdll);
+    FreeLibrary(hdll);
+}</pre>
+or 
+<pre>//Load a bitmap resource;
+HBITMAP bitmap = ::LoadBitmap(AfxGetInstanceHandle(),
+                              MAKEINTRESOURCE(IDB_BITMAP1)));
+CxImage *newImage = new CxImage();
+newImage-&gt;CreateFromHBITMAP(bitmap);</pre>
+
+<h2>... decode an image from memory</h2>
+
+<pre>CxImage image((BYTE*)buffer,size,image_type);</pre>
+or 
+<pre>CxMemFile memfile((BYTE*)buffer,size);
+CxImage image(&amp;memfile,image_type);</pre>
+or 
+<pre>CxMemFile memfile((BYTE*)buffer,size);
+CxImage* image = new CxImage();
+image-&gt;Decode(&amp;memfile,type);</pre>
+
+<h2>... encode an image in memory</h2>
+
+<pre>long size=0;
+BYTE* buffer=0;
+image.Encode(buffer,size,image_type);
+...
+free(buffer);</pre>
+or 
+<pre>CxMemFile memfile;
+memfile.Open();
+image.Encode(&amp;memfile,image_type);
+BYTE* buffer = memfile.GetBuffer();
+long size = memfile.Size();
+...
+free(buffer);</pre>
+
+<h2>... create a multipage TIFF</h2>
+
+<pre>CxImage *pimage[3];
+pimage[0]=&amp;image1;
+pimage[1]=&amp;image2;
+pimage[2]=&amp;image3;
+
+FILE* hFile;
+hFile = fopen("multipage.tif","w+b");
+
+CxImageTIF multiimage;
+multiimage.Encode(hFile,pimage,3);
+
+fclose(hFile);</pre>
+or 
+<pre>FILE* hFile;
+hFile = fopen("c:\\multi.tif","w+b");
+
+CxImageTIF image;
+image.Load("c:\\1.tif",CXIMAGE_FORMAT_TIF);
+image.Encode(hFile,true);
+image.Load("c:\\2.bmp",CXIMAGE_FORMAT_BMP);
+image.Encode(hFile,true);
+image.Load("c:\\3.png",CXIMAGE_FORMAT_PNG);
+image.Encode(hFile);
+
+fclose(hFile);
+</pre>
+
+<h2>... copy/paste an image</h2>
+
+<pre>//copy
+HANDLE hDIB = image-&gt;CopyToHandle();
+if (::OpenClipboard(AfxGetApp()-&gt;m_pMainWnd-&gt;GetSafeHwnd())) {
+    if(::EmptyClipboard()) {
+        if (::SetClipboardData(CF_DIB,hDIB) == NULL ) {
+            AfxMessageBox( "Unable to set Clipboard data" );
+}    }    }
+CloseClipboard();
+
+//paste
+HANDLE hBitmap=NULL;
+CxImage *newima = new CxImage();
+if (OpenClipboard()) hBitmap=GetClipboardData(CF_DIB);
+if (hBitmap) newima-&gt;CreateFromHANDLE(hBitmap);
+CloseClipboard();</pre>
+
+<h2>... display a file in a picture box</h2>
+
+<pre>HBITMAP m_bitmap = NULL;
+CxImage image("myfile.png", CXIMAGE_FORMAT_PNG);
+...
+m_bitmap = image.MakeBitmap(m_picture.GetDC()-&gt;m_hDC);
+m_picture.SetBitmap(m_bitmap);
+...
+if (m_bitmap) DeleteObject(m_bitmap);</pre>
+
+<h2>History and credits.<a name="history"></a></h2>
+
+<p>Starting form my <code>CxDib</code> class, that implements memory DIBs only, I tried to add some members to read images from files. Looking for a solution, I found a nice MFC class named <code>CImage</code> on the net, release 1.4 (1998). <code>CImage</code> supports BMP, GIF, PNG and JPG, but suffers many little bugs and uses a complex class structure, so I decided to strip it to the base and merge <code>CxDib</code> with the <code>CImage</code> philosophy, to obtain the new <code>CxImage</code> class. Also I updated the libraries for JPG, PNG and ZLIB.</p>
+
+<p>With <code>CxImage</code> it is very easy to add new image types, so I added the TIFF library (rev. 6) and a minimal support for <code>ICON</code>s, MNG, TGA and PCX. Finally I added some specific functions to obtain an image from global <code>HANDLE</code>s (windows clipboard) and objects (windows resources). This is the story until the early release, the following is written in the <a href="http://www.xdp.it/cximage/" target="_blank">documentation</a>. </p>
+
+<ul>
+<li>CImage ?1995-1998, Alejandro Aguilar Sierra. </li>
+
+<li>IJG JPEG library ?994-1998, Thomas G. Lane. </li>
+
+<li>LibPNG version 1.2.7?1998-2004 Glenn Randers-Pehrson </li>
+
+<li>LibTIFF version 3.5.7 ?1988-1997 Sam Leffler, ?1991-1997 Silicon Graphics, Inc. </li>
+
+<li>LibMNG version 1.0.2 ?2000,2001 Gerard Juyn. </li>
+
+<li>Gif-RLE ?Hutchison Avenue Software Corporation, 1998 </li>
+
+<li>LibJ2K?David Janssens, 2001 - 2002 </li>
+
+<li>LibJBG version 1.6 ?Markus Kuhn, 2004 </li>
+
+<li>JasPer version 1.700.2 ?Image Power, UBC, Michael David Adams, 2001 - 2003 </li>
+
+<li>zlib version 1.2.1 ?1995-2003 Jean-loup Gailly and Mark Adler </li>
+
+<li>Thanks to Troels Knakkergaard for his precious work in the earlier versions of CxImage, Rajiv Ramachandran for <code>CTwain</code> code; to Abe for multi page tiffs code; to Chris Shearer Cooper for memory file suggestions and code; to Brent Corkum for <code>BCMenu</code> code. </li>
+</ul>
+
+<p>More specific credits and disclaimers are in every header file of each library.</p>
+
+
+
+<!-- Article Ends -->
+
+</body>
+</html>

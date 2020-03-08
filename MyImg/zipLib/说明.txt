@@ -1,0 +1,20 @@
+整理：木瓜
+
+zlib库：v1.2.3
+   zlib.lib
+   zlib.h
+   zconf.h
+
+minizip库：2006 年
+  minizip.lib
+  zip.h
+  unzip.h
+  ioapi.h
+minizip依赖zlib1.2.3
+
+
+
+
+
+注：
+__cdcel调用方式，/MD

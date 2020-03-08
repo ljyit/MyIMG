@@ -1,0 +1,72 @@
+//////////////////////////////////////////////////////////////////////////
+//   压缩zlib函数库
+
+#pragma once
+
+#include <windows.h>
+#include <stdio.h>
+//zlib define
+#include "zlib.h"
+#pragma comment(lib,"ziplib\\zlib.lib")
+//minizip define
+#include "zip.h"
+#include "unzip.h"
+#pragma comment(lib,"ziplib\\minizip.lib")
+
+
+//////////////////////////////////////////////////////////////////////////
+//读取文件的zip格式日期
+BOOL GetFileZipInfo(const char * pFileName,			//文件名
+					zip_fileinfo * zipFileInfo);	//要处理的类型
+
+					
+//////////////////////////////////////////////////////////////////////////
+//读取文件的crc值
+DWORD GetFileCRC32(const char * cFileName);
+
+
+//////////////////////////////////////////////////////////////////////////
+//将文件压缩
+BOOL zipAddFile(void * hZip,					//zip文件句柄
+				const char * cFileName,		//要压缩的文件名
+				const char * cPassword=NULL,	//密码
+				 int nCompressLevel=-1);		//压缩级别
+
+				 
+//////////////////////////////////////////////////////////////////////////
+BOOL zipAddFolder(void * hZip,					//zip文件句柄
+				  const char* cFolderName,		//文件夹 不能包含最后一个斜杠
+				  const char* cPassword=NULL,	//密码
+				  int nCompressLevel=-1);		//压缩级别
+
+				  
+////////////////////////////////////////////////////////////////////////////
+//设置文件日期
+void SetFileZipInfo(const char * cFileName,unz_file_info * unzInfo);
+
+
+//////////////////////////////////////////////////////////////////////////
+//建立文件夹
+BOOL unzCreateFolder(char * pFolder);
+
+
+//////////////////////////////////////////////////////////////////////////
+//解压当前文件
+BOOL unzCreateCurrentFile(void * hZip,
+						  char * cFileName,
+						  const char * cPassword=NULL,
+						  DWORD dwFileAttrib=FILE_ATTRIBUTE_NORMAL);
+
+
+//////////////////////////////////////////////////////////////////////////
+//解压文件
+BOOL unzUnzipFile(const char * cZipFile, const char * cDestFolder, const char * cPassword=NULL);
+
+
+//////////////////////////////////////////////////////////////////////////
+//检查一下文件是否存在于zip文件
+BOOL unzFileInZip(const char * cZipFile,const char * cCheckFile);
+
+//////////////////////////////////////////////////////////////////////////
+//定位一个文件
+BOOL unzSeekFile(void * hZip,char * cFileName);
